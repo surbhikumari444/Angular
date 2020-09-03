@@ -3,6 +3,7 @@ const app = express()
 const appConfig = require('./app/appConfig')
 const port = 4000
 const fs = require('fs');
+const mongoose = require('mongoose')
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -20,5 +21,7 @@ fs.readdirSync(routesPath).forEach(function(file) {
 });
 
 app.listen(appConfig, () => {
-  console.log(`Example app listening at http://localhost:${appConfig.port}`)
+  console.log(`Example app listening at http://localhost:${appConfig.port}`);
+  let db = mongoose.connect(appConfig.db.uri, { useMongoClient: true});
+
 })
