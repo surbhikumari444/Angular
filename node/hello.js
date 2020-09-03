@@ -4,9 +4,9 @@ const appConfig = require('./app/appConfig')
 const port = 4000
 const fs = require('fs');
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 let routesPath ='./routes';
 fs.readdirSync(routesPath).forEach(function(file) {
@@ -19,6 +19,6 @@ fs.readdirSync(routesPath).forEach(function(file) {
   }
 });
 
-app.listen(port, () => {
+app.listen(appConfig, () => {
   console.log(`Example app listening at http://localhost:${appConfig.port}`)
 })
